@@ -21,20 +21,18 @@ public class LogoutController extends HttpServlet {
 			session.invalidate();
 		}
 
-		// Xoá cookie "username" nếu có
 		Cookie[] cookies = req.getCookies();
 		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				if ("username".equals(cookie.getName())) {
 					cookie.setValue(null);
-					cookie.setMaxAge(0); // hết hạn ngay lập tức
+					cookie.setMaxAge(0);
 					cookie.setPath(req.getContextPath());
 					resp.addCookie(cookie);
 				}
 			}
 		}
 
-		// Chuyển về trang login hoặc home
 		resp.sendRedirect(req.getContextPath() + "/login");
 	}
 
