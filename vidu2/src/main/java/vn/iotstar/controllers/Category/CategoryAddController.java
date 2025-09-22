@@ -1,5 +1,6 @@
 package vn.iotstar.controllers.Category;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,6 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
+import vn.iotstar.controllers.Constant;
 import vn.iotstar.models.CategoryModel;
 import vn.iotstar.services.CategoryService;
 import vn.iotstar.services.impl.CategoryServiceImpl;
@@ -24,7 +26,6 @@ import vn.iotstar.services.impl.CategoryServiceImpl;
 	)
 public class CategoryAddController extends HttpServlet {
 	CategoryService cateService = new CategoryServiceImpl();
-
 	/**
 	 * 
 	 */
@@ -41,15 +42,19 @@ public class CategoryAddController extends HttpServlet {
 		try {
 			String name = req.getParameter("name");
 			Part part = req.getPart("image");
-			String realPath = req.getServletContext().getRealPath("/uploads");
+			//String realPath = req.getServletContext().getRealPath("/uploads");
 			String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-			if (!Files.exists(Paths.get(realPath))) {
-				Files.createDirectory(Paths.get(realPath));
-			}
-			part.write(realPath + "/" + filename);
+			
+            File uploadDir = new File(Constant.DIR);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+            part.write(Constant.DIR + File.separator + filename);
+            
+            
 			CategoryModel category = new CategoryModel();
 			category.setCatename(name);
-			category.setIcon("uploads/" + filename);
+			category.setIcon(filename);
 			cateService.insert(category);
 			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
 		} catch (Exception e) {

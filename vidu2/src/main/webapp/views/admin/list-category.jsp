@@ -27,7 +27,7 @@
                 <tr>
                     <td>${STT.index + 1}</td>
                     <td>
-                        <img src="${pageContext.request.contextPath}/${cate.icon}"
+                        <img src="${pageContext.request.contextPath}/image/${cate.icon}"
                              class="img-thumbnail" style="width: 150px; height: 150px; object-fit: cover;"/>
                     </td>
                     <td>${cate.catename}</td>

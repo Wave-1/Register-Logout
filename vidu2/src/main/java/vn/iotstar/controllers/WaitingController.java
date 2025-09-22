@@ -2,7 +2,6 @@ package vn.iotstar.controllers;
 
 import java.io.IOException;
 
-import org.apache.catalina.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
