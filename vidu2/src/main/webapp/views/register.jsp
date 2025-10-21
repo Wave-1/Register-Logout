@@ -65,7 +65,7 @@
 						</div>
 
 						<div class="col-md-6">
-							<label class="form-label">Ngày tạo</label> <input type="date"
+							<label class="form-label" ></label> <input type="hidden"
 								name="createdDate" class="form-control"
 								value="<%=new java.sql.Date(System.currentTimeMillis()).toString()%>"
 								readonly>

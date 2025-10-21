@@ -56,7 +56,7 @@ public class CategoryAddController extends HttpServlet {
 			category.setCatename(name);
 			category.setIcon(filename);
 			cateService.insert(category);
-			resp.sendRedirect(req.getContextPath() + "/admin/category/list");
+			resp.sendRedirect(req.getContextPath() + "/admin/home");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

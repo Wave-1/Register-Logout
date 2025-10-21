@@ -46,6 +46,12 @@
 			<version>1.4</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.sitemesh</groupId>
+			<artifactId>sitemesh</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+		
   </dependencies>
   
    <build>
